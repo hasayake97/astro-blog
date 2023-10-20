@@ -1,0 +1,39 @@
+---
+  const navList = [
+    { title: 'Home', url: '/' },
+    { title: 'Blog', url: '/posts' }
+  ]
+---
+
+<header>
+  <a href="/">
+    <h1>Unot...</h1>
+  </a>
+  <nav>
+    <p>
+      {
+        navList.map(nav => (
+          <a key={nav.url} href={nav.url}>{nav.title}</a>
+        ))
+      }
+    </p>
+  </nav>
+</header>
+
+<style>
+nav a {
+  margin-right: 16px;
+}
+
+header > a {
+  color: var(--heading-color);
+}
+
+header h1 {
+  font-size: 1.5em;
+}
+
+p > a:hover {
+  text-decoration: underline;
+}
+</style>

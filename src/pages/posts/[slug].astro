@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Supabase from '../../helper/serve/supabase.js';
+
+export const getStaticPaths = async () => {
+  return Supabase.getPosts('slug').then(posts => {
+    return posts.map(post => ({
+      params: post
+    }))
+  })
+};
+
+const post = (await Supabase.getPost(Astro.params.slug))?.[0]
+const { title, content } = post
+---
+
+<Layout title={title}>
+  <header><h1>{title}</h1></header>
+  <article set:html={content}></article>
+</Layout>

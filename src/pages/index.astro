@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Supabase from '../helper/serve/supabase.js';
+
+const postData = await Supabase.getPosts('title, slug')
+---
+
+<Layout title="Unot's blog">
+	<p>Hello...</p>
+</Layout>
